@@ -1,13 +1,6 @@
-import dotenv from "dotenv";
-import { Server } from "./models/server";
-
-dotenv.config();
-
-const server = new Server();
-server.listen();
- 
-app.get('/', (req, res) => {
-    const HtmlResponse = `
+"use strict";
+app.get("/", (req, res) => {
+    const htmlFront = `
     <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,6 +79,5 @@ app.get('/', (req, res) => {
     </main>
   </body>
 </html>
-
-    `
-}
+`;
+});
