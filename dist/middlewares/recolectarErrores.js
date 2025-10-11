@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.recolectarErrores = void 0;
-const express_validator_1 = require("express-validator");
-const recolectarErrores = (req, res, next) => {
-    const errors = (0, express_validator_1.validationResult)(req);
+import { validationResult } from "express-validator";
+export const recolectarErrores = (req, res, next) => {
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.status(400).json(errors);
     }
@@ -11,4 +8,3 @@ const recolectarErrores = (req, res, next) => {
         next();
     }
 };
-exports.recolectarErrores = recolectarErrores;

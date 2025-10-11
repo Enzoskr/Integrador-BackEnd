@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAdmin = void 0;
-const constants_1 = require("../helpers/constants");
-const isAdmin = (req, res, next) => {
+import { ROLES } from "../helpers/constants";
+export const isAdmin = (req, res, next) => {
     const { rol } = req.body.usuarioConfirmado;
-    if (rol !== constants_1.ROLES.admin) {
+    if (rol !== ROLES.admin) {
         res.status(401).json({
             msg: "El usuario no es administrador",
         });
@@ -12,4 +9,3 @@ const isAdmin = (req, res, next) => {
     }
     next();
 };
-exports.isAdmin = isAdmin;

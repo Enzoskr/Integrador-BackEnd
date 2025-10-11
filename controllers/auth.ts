@@ -7,19 +7,13 @@ import { sendEmail } from "../mailer/mailer";
 import { generarJWT } from "../helpers/generarJWT";
 
 export const register = async (req: Request, res: Response) => {
-  const { email, nombre, password, rol }: IUser = req.body;
+  const { email, nombre, password }: IUser = req.body;
 
-  const usuario = new Usuario({ email, nombre, password, rol });
+  const usuario = new Usuario({ email, nombre, password });
 
   const salt = bcryptjs.genSaltSync();
 
   usuario.password = bcryptjs.hashSync(password, salt);
-
-  const adminKey = req.headers["admin-key"];
-
-  if (adminKey === process.env.KEYFORADMIN) {
-    usuario.rol = ROLES.admin;
-  }
 
   const newCode = randomstring.generate(6);
 

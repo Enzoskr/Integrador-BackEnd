@@ -1,13 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-const OrderSchema = new mongoose_1.Schema({
+import { Schema, model } from "mongoose";
+const OrderSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
     },
     user: {
-        type: mongoose_1.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Usuario",
         required: true,
     },
@@ -73,5 +71,5 @@ const OrderSchema = new mongoose_1.Schema({
         required: true,
     },
 });
-const Order = (0, mongoose_1.model)("Order", OrderSchema);
-exports.default = Order;
+const Order = model("Order", OrderSchema);
+export default Order;

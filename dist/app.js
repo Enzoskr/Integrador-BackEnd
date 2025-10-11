@@ -1,12 +1,12 @@
-"use strict";
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv_1 = __importDefault(require("dotenv"));
-const server_1 = require("./models/server");
-dotenv_1.default.config();
-const server = new server_1.Server();
+import dotenv from "dotenv";
+import { Server } from "./models/server";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const server = new Server();
 server.listen();
+server.app.get("/", (req, res) => {
+    res.sendFile(join(__dirname, "public", "index.html"));
+});

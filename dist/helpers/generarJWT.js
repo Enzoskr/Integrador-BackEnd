@@ -1,14 +1,8 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.generarJWT = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const generarJWT = (id = "") => {
+import jwt from "jsonwebtoken";
+export const generarJWT = (id = "") => {
     const payload = { id };
     return new Promise((res, rej) => {
-        jsonwebtoken_1.default.sign(payload, process.env.CLAVEDEJWT, {
+        jwt.sign(payload, process.env.CLAVEDEJWT, {
             expiresIn: "2h",
         }, (err, token) => {
             if (err) {
@@ -21,4 +15,3 @@ const generarJWT = (id = "") => {
         });
     });
 };
-exports.generarJWT = generarJWT;

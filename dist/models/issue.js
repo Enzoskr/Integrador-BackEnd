@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-const IssueSchema = new mongoose_1.Schema({
+import { Schema, model } from "mongoose";
+const IssueSchema = new Schema({
     title: {
         type: String,
         required: [true, "el titulo es obligatorio"],
@@ -15,7 +13,7 @@ const IssueSchema = new mongoose_1.Schema({
         required: [true, "la prioridad es obligatoria"],
     },
     user: {
-        type: mongoose_1.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Usuario",
         required: true,
     },
@@ -24,5 +22,5 @@ const IssueSchema = new mongoose_1.Schema({
         default: Date.now,
     },
 });
-const Issue = (0, mongoose_1.model)("Issue", IssueSchema);
-exports.default = Issue;
+const Issue = model("Issue", IssueSchema);
+export default Issue;

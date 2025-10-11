@@ -12,11 +12,15 @@
     "randomstring": "^1.3.0",
     "typescript": "^5.2.2"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "name": "integrador-de-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
